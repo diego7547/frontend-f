@@ -1,0 +1,15 @@
+
+<div class="content-panel">
+    <div class="content-body shadow">
+        <div class="header-panel">
+            <h1>Registro de asistencia</h1>
+            <div class="panel-opcion">
+                <button (click)="registro(1)" [ngClass]="{'btn-success':status== true,'btn-outline-success':status == false}" class="btn" >Registro de entrada</button>
+                <button (click)="registro(2)" [ngClass]="{'btn-warning':status == false,'btn-outline-warning':status ==true}" class="btn" >Registro de salida</button>
+            </div>
+        </div>
+        <div class="body-panel">
+            <app-panel-resgitro [statusRegistro]="status"></app-panel-resgitro>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<form [formGroup]="personal" (ngSubmit)="enviarRegistro()">
+    <div class="form-input">
+        <input class="form  form-control" spinners="false"  type="text" formControlName="dniPersonal" placeholder="Ingrese su dni">
+        <div class="position-absolute" *ngIf="personal.get('dniPersonal')?.touched || personal.controls['dniPersonal'].invalid ">
+            <span *ngIf="personal.get('dniPersonal')?.touched && personal.get('dniPersonal')?.errors?.['required']" class="text-danger">
+            Debe de ingresar su dni 
+            </span>
+        </div>
+    </div>
+    <div class="form-button text-center  ">
+   
+        <button class="btn btn-primary" [disabled]="personal.invalid">enviar</button>
+    </div>
+</form>
+
+

@@ -1,0 +1,49 @@
+<div class="text-center content-login">
+    <div class="row align-items-center login min-vh-100">
+      <div class="col-md-5 login-form ">
+            <div class=" d-flex justify-content-center align-items-center flex-column">
+                <img src="./../../../../assets/Imagen1.png"  alt="">
+                <h1 class="text-center title ">REGISTRO ACADEMICO</h1>
+                <div class="form-body">
+                    <form [formGroup]="user" (ngSubmit)="enviar()">
+                        <div class="form-data">
+                            <span class="pi pi-user position-absolute icon" ></span>
+                            <input type="text" placeholder="Nombre de usuario" formControlName="username">
+                            <div class="position-absolute" *ngIf="user.get('username')?.touched || user.controls['username'].invalid ">
+                                <span *ngIf="(user.get('username')?.touched && user.get('username')?.errors?.['required']) " class="text-danger">
+                                Campo requerido
+                                </span>
+                                <span [hidden]="valido || user.get('username')?.touched" class="text-danger">
+                                        usuario invalido
+                                </span>
+                                <!-- <span *ngIf="user.get('username')?.touched && user.get('username')?.errors?.['minlength']" class="text-danger">
+                                    Debe de ingresar {{user.get('username')?.errors?.['minlength'].requiredLength}} caracteres como minimo
+                                    </span> -->
+                            </div>
+                        </div>
+                        <div class="form-data">
+                            <span class="pi pi-lock position-absolute icon" ></span>
+                            <input type="password" placeholder="Contraseña" formControlName="password">
+                            <div class="position-absolute" *ngIf="user.get('password')?.touched || user.controls['password'].invalid ">
+                                <span *ngIf="user.get('password')?.touched && user.get('password')?.errors?.['required']" class="text-danger">
+                                Campo requerido
+                                </span>
+                                <span [hidden]="valido || user.get('password')?.touched" class="text-danger">
+                                    contraseña invalido
+                            </span>
+                            </div>
+                        </div>
+                        <div class="form-data">
+                            <button [disabled]="user.invalid">Acceder</button>
+                        </div>
+                    </form>
+                </div>
+                <span class="copyright">Copyright@SanMiguel</span>
+            </div>
+      </div>
+      <div class="col-md-7 login-img  d-flex justify-content-center">
+          <img  src="./../../../../assets/img-logo.jpg" alt="colegio" class="img-colegio" width="800px">
+      </div>
+      
+    </div>
+  </div>

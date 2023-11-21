@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&family=Poppins&family=Roboto+Slab&display=swap');
+@import "primeicons/primeicons.css";
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.login-form{
+    
+    height: calc(100vh - 10px);
+
+    padding: 60px;
+
+}
+
+.login-img{
+    
+    height: calc(100vh - 2px);
+    
+}
+
+.form-body{
+    margin-top: 20px;
+    padding: 30px;
+    width: 400px;
+    
+    
+}
+
+.title{
+    width: 50px 50px;
+    margin-top: 30px;
+    font-size: 30px;
+}
+
+.form-data{
+    margin-top: 30px;
+    padding: .1px;
+    position: relative;
+    input{
+        padding:6px;
+        padding-left: 30px;
+        width: 100%;
+    }
+}
+
+span{
+    left: 7px;
+    top: 10px;
+}
+
+button{
+    width: 100%;
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+}
+.copyright{
+    position: relative;
+    margin-top: 70px;
+    margin-bottom: 20px;
+}
+button:hover{
+    cursor: pointer;
+}
+
+.img-colegio{
+    min-width:100%;
+    height: auto;
+}

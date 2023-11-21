@@ -1,0 +1,34 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+.form-data{
+    padding: 10px;
+    .data{
+       margin-top: 20px;
+        input{
+            padding: 5px 2px ;
+            margin: 4px;
+        }
+      
+        select{
+            padding: 5px 2px ;
+            margin: 4px;
+        }
+        
+    
+    }
+}
+
+button{
+    padding: 5px 2px ;
+            margin: 4px;
+}
+
+textarea{
+    resize: none;
+}

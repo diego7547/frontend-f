@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.sidenav {
+    height: calc(100vh - 120px);
+
+    
+    padding: .1px;
+    .logo-container{
+     
+        margin-top: 40px;
+    }
+
+    .nav-items{
+       margin-top: 80px;
+        position: relative;
+        .nav-items-link{
+            margin-top: 20px;
+           
+           
+        .nav-button{
+            width: 100%;
+            padding: 10px;
+            border-radius: 30px;
+            position: relative;
+           i{
+            position: absolute;
+            left: 20px;
+            top: 12px;
+           }
+        }
+        }
+    }
+   
+}
+
+button{
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
+button:hover{
+    background-color: white;
+    color: black;
+}

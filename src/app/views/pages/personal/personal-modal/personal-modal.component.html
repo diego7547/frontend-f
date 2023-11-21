@@ -1,0 +1,31 @@
+<app-modal  (showModel)="initShowModel($event)" [visible]="showModel"  [width]="'40vw'  ">
+    <h1 class="text-center">Registro Personal</h1>
+  <form class="form-data" [formGroup]="formData" (submit)="submitData()">
+        <div class="row data">
+            <input type="text" placeholder="Ingrese su nombre" formControlName="nomPersonal">
+        </div>
+        <div class="row data">
+            <input type="text" placeholder="Ingrese su apellido" formControlName="apePersonal">
+        </div>
+        <div class="row data  d-flex justify-content-evenly">
+            <input type="number" placeholder="Ingrese su telefono" class="col" formControlName="telPersonal">
+            <input type="date" class="col" formControlName="fnacPersonal">
+        </div>
+        <div class="row data  d-flex justify-content-evenly">
+            <select formControlName="rolPersonal">
+                <option class="p-2" *ngFor="let rol of rolesList" [value]="rol">{{rol}}</option>
+            </select>
+        </div>
+        <div class="row data">
+            <input type="text" placeholder="Ingrese su dni" formControlName="dniPersonal">
+        </div>
+        <div class="row data">
+            <textarea name="" id=""  rows="5" formControlName="direcPersonal"></textarea>
+        </div>
+        <div class="row data">
+            <button class="col btn btn-primary" type="submit">Registrar</button>
+            <button class="col btn btn-danger" type="button" (click)="cancelar()">Volver</button>
+        </div>
+    </form>
+
+</app-modal>

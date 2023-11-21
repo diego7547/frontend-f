@@ -1,0 +1,39 @@
+<app-modal (showModel)="initShowModel($event)" [visible]="showModel" [width]="'30vw'">
+    <h1 class="text-center">Registro Asistencia</h1>
+    <form class="form-data" [formGroup]="formData" (submit)="submitData()">
+        <div class="row data">
+            <input
+              type="number"
+              placeholder="Ingrese su dni "
+              class="col"          
+            formControlName="dniPersonal"
+              />
+    
+          </div>
+          <div class="row data  d-flex justify-content-evenly">
+            <select formControlName="estRegistro" formControlName="dsHorario">
+                <option class="p-2" *ngFor="let rol of rolesList" [value]="rol">{{rol}}</option>
+            </select>
+        </div>
+        <div class="row data">
+        <input
+        type="time"
+        class="col"
+            formControlName="hdiHorario"
+      />
+      <input
+      type="time"
+      formControlName="hdsHorario"
+      
+      class="col"
+      
+    />
+
+      </div>
+     
+      <div class="row data">
+        <button class="col btn btn-primary" type="submit">Registrar</button>
+        <button class="col btn btn-danger" type="button" (click)="cancelar()" >Volver</button>
+      </div>
+    </form>
+  </app-modal>
