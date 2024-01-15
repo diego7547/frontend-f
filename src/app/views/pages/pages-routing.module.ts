@@ -16,7 +16,6 @@ canActivate:[authGuard]},
 {
   path:'dashboard',loadChildren:()=>import('./dashboard/dashboard.module').then(m => m.DashboardModule),canActivate:[authGuard]
 },
-{path:'contacto',loadChildren:()=>import('./contacto/contacto.module').then(m => m.ContactoModule)}
 ];
 
 @NgModule({
