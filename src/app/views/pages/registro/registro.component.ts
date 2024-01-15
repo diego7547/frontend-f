@@ -111,6 +111,7 @@ export class RegistroComponent implements OnInit , AfterViewInit {
 
   // configuracion de datos => cambiar los datos a uno estandar
   isLoading(data: Registro[]): any[] {
+    
     return data.map((registros) =>({
       ...registros,
       hdeRegistro: moment(registros.hdeRegistro, 'h:mm:ss a').format(
