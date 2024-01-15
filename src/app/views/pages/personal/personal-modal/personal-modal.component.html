@@ -1,29 +1,120 @@
-<app-modal  (showModel)="initShowModel($event)" [visible]="showModel"  [width]="'40vw'  ">
-    <h1 class="text-center">Registro Personal</h1>
+
+
+<app-modal   (showModel)="initShowModel($event)" [visible]="showModel"  [width]="'40vw'" (modalClosed)="cancelar()">
+   <!--  <h1 class="text-center">Registro Personal</h1>
   <form class="form-data" [formGroup]="formData" (submit)="submitData()">
-        <div class="row data">
-            <input type="text" placeholder="Ingrese su nombre" formControlName="nomPersonal">
+    <div class="row data">
+        <input type="text" placeholder="Ingrese su dni" formControlName="dniPersonal" [ngClass]="{'danger':formData.get('dniPersonal')?.touched && formData.get('dniPersonal')?.errors?.['required']}">
+        <div class="position-absolute" *ngIf="formData.get('dniPersonal')?.touched || formData.controls['dniPersonal'].invalid ">
+            <span *ngIf="formData.get('dniPersonal')?.touched && formData.get('dniPersonal')?.errors?.['required']" class="text-danger">
+            Debe de ingresar su dni*
+            </span>
         </div>
+    </div>
         <div class="row data">
-            <input type="text" placeholder="Ingrese su apellido" formControlName="apePersonal">
+            <input type="text" placeholder="Ingrese su nombre" formControlName="nomPersonal" [ngClass]="{'danger':formData.get('nomPersonal')?.touched && formData.get('nomPersonal')?.errors?.['required']}">
+            <div class="position-absolute" *ngIf="formData.get('nomPersonal')?.touched || formData.controls['nomPersonal'].invalid ">
+                <span *ngIf="formData.get('nomPersonal')?.touched && formData.get('nomPersonal')?.errors?.['required']" class="text-danger">
+                Debe de ingresar su nombre*
+                </span>
+            </div>
         </div>
+
+        <div class="row data">
+            <input type="text" placeholder="Ingrese su apellido" formControlName="apePersonal" [ngClass]="{'danger':formData.get('apePersonal')?.touched && formData.get('apePersonal')?.errors?.['required']}" >
+            <div class="position-absolute" *ngIf="formData.get('apePersonal')?.touched || formData.controls['apePersonal'].invalid ">
+                <span *ngIf="formData.get('apePersonal')?.touched && formData.get('apePersonal')?.errors?.['required']" class="text-danger">
+                Debe de ingresar su apellido*
+                </span>
+            </div>
+        </div>
+        
         <div class="row data  d-flex justify-content-evenly">
             <input type="number" placeholder="Ingrese su telefono" class="col" formControlName="telPersonal">
-            <input type="date" class="col" formControlName="fnacPersonal">
+            <input type="date" class="col" formControlName="fnacPersonal" [value]="formDataEdit.fnacPersonal | date:'yyyy-MM-dd'"    [ngClass]="{'danger':formData.get('fnacPersonal')?.touched && formData.get('fnacPersonal')?.errors?.['required']}" >
+            
+            <div class="position-absolute" *ngIf="formData.get('fnacPersonal')?.touched || formData.controls['fnacPersonal'].invalid ">
+                <span *ngIf="formData.get('fnacPersonal')?.touched && formData.get('fnacPersonal')?.errors?.['required']" class="text-danger span-2">
+                Campo requerido*
+                </span>
+            </div>
         </div>
         <div class="row data  d-flex justify-content-evenly">
-            <select formControlName="rolPersonal">
-                <option class="p-2" *ngFor="let rol of rolesList" [value]="rol">{{rol}}</option>
+            <select formControlName="rolPersonal" [ngClass]="{'danger':formData.get('rolPersonal')?.touched && formData.get('rolPersonal')?.errors?.['required']}" >
+                <option class="p-2" *ngFor="let rol of rolesList" [value]="rol">{{rol}}</option>          
             </select>
+            <div class="position-absolute" *ngIf="formData.get('rolPersonal')?.touched || formData.controls['rolPersonal'].invalid ">
+                <span *ngIf="formData.get('rolPersonal')?.touched && formData.get('rolPersonal')?.errors?.['required']" class="text-danger span-3">
+                Campo requerido*
+                </span>
+            </div>
         </div>
-        <div class="row data">
-            <input type="text" placeholder="Ingrese su dni" formControlName="dniPersonal">
-        </div>
+       
         <div class="row data">
             <textarea name="" id=""  rows="5" formControlName="direcPersonal"></textarea>
         </div>
         <div class="row data">
-            <button class="col btn btn-primary" type="submit">Registrar</button>
+            <button class="col btn btn-primary" type="submit" [disabled]="formData.invalid">{{isUpdateOrInsert? 'Registrar':'Actualizar' }}</button>
+            <button class="col btn btn-danger" type="button" (click)="cancelar()">Volver</button>
+        </div>
+    </form> -->
+   
+   
+    
+
+    
+    <h1 class="text-center m-2">Registro Personal</h1>
+    <form [formGroup]="formData" (submit)="submitData()">
+         
+        <div class="form-data">
+            <mat-form-field appearance="outline">
+                <mat-label>Dni</mat-label>
+                <input matInput type="number" placeholder="Ejm. 1234567" formControlName="dniPersonal" />
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Nombres</mat-label>
+                <input matInput type="text" placeholder="Ejm. Username"  formControlName="nomPersonal" />
+              </mat-form-field>
+        </div>
+        <div class="form-data">
+            <mat-form-field appearance="outline">
+                <mat-label>Apellidos</mat-label>
+                <input matInput type="string" placeholder="Ejm. Username"  formControlName="apePersonal" />
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Telefono</mat-label>
+                <input matInput type="number" placeholder="Ejm. 987654321" formControlName="telPersonal" />
+              </mat-form-field>
+        </div>
+        <div class="form-data">
+            <mat-form-field appearance="outline">
+                <mat-label>Cargo Pers.</mat-label>
+                <mat-select formControlName="cargo" formControlName="rolPersonal">
+                  <mat-option *ngFor="let cargo of rolesList" [value]="cargo">
+                      {{  cargo |  uppercase}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div class="form-data">
+            <mat-form-field appearance="outline">
+                <mat-label>Fecha de Nac.</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="fnacPersonal" />
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Direccion</mat-label>
+                <input matInput type="text" placeholder="Ejm. direccion #"  formControlName="direcPersonal" />
+              </mat-form-field>
+        </div>
+        <div class="action">
+            <button class="col btn btn-primary" type="submit" [disabled]="formData.invalid">{{isUpdateOrInsert? 'Registrar':'Actualizar' }}</button>
             <button class="col btn btn-danger" type="button" (click)="cancelar()">Volver</button>
         </div>
     </form>

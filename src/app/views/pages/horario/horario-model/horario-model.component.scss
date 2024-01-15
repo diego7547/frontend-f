@@ -4,29 +4,25 @@
     box-sizing: border-box;
 }
 
-
+form{
+    padding: 10px;
+}
 
 .form-data{
-    padding: 10px;
-    .data{
-       margin-top: 20px;
-        input{
-            padding: 5px 2px ;
-            margin: 4px;
-        }
-      
-     
-        
-    
+    display: flex;
+    gap: 10px;
+
+    mat-form-field{
+        width: 100%;
     }
 }
 
-button{
-    padding: 5px 2px ;
-            margin: 4px;
-}
-
-select{
-    padding: 5px 2px ;
-    margin: 4px;
+.action{
+    
+    
+    display: flex;
+    gap: 10px;
+    button{
+        padding: 5px;
+    }
 }

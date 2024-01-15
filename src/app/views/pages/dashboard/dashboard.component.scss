@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.card-F{
+    background-color: rgb(212, 13, 13);
+    color: white;
+}
+.card-Per{
+    background-color: orange;
+    color: white;
+}
+
+.card-As{
+    background-color: rgb(0, 255, 170);
+    color: white;
+}
+.card-Ps{
+    background-color: rgb(43, 70, 157);
+    color: white;    
+}
+#chart{
+    max-width: 100%;
+  margin: 35px auto;
+    position: relative;
+    overflow: auto;
+}
+.content-sidebar{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

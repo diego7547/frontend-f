@@ -13,4 +13,5 @@ export  enum diaSemanal{
     MIERCOLES,
     JUEVES,
     VIERNES
+    
 }

@@ -11,33 +11,36 @@ export class HorarioService {
   constructor(private http:HttpClient) { }
 
   findAll(){
-    return this.http.get(`${environment.apiURL}/horario`);
+    return this.http.get<Horario[]>(`${environment.apiURL}/horario`);
   }
 
-  insertOrUpdate(horario:Horario){
-    if(horario.idHorario){
-      return this.http.put(`${environment.apiURL}/horario/${horario.idHorario}`,{
-        hdiHorario:horario.hdiHorario,
-        hdsHorario:horario.hdsHorario,
-        dniPersonal:horario.dniPersonal,
-        dsHorario:horario.dsHorario
-      });
-    }else{
-      return this.http.post(`${environment.apiURL}/horario`,{
-        hdiHorario:horario.hdiHorario,
-        hdsHorario:horario.hdsHorario,
-        dniPersonal:horario.dniPersonal,
-        dsHorario:horario.dsHorario
-      });
-    }
+
+
+  updateHorario(horario:Horario){
+    return this.http.put(`${environment.apiURL}/horario/${horario.idHorario}`,{
+      hdiHorario:horario.hdiHorario,
+      hdsHorario:horario.hdsHorario,
+      dniPersonal:horario.dniPersonal,
+      dsHorario:horario.dsHorario
+    });
+  }
+
+  insertHorario(horario:Horario){
+    console.log(horario.dniPersonal);
+    return this.http.post(`${environment.apiURL}/horario`,{
+      hdiHorario:horario.hdiHorario,
+      hdsHorario:horario.hdsHorario,
+      dniPersonal:horario.dniPersonal,
+      dsHorario:horario.dsHorario
+    });
   }
 
   findOne(id:number){
-    return this.http.get<{idHorario:number,hdiHorario:string,hdsHorario:string,nomPersonal:string,dniPersonal:string,dsHorario:diaSemanal}>(`${environment.apiURL}/horario/${id}`);
+    return this.http.get<Horario>(`${environment.apiURL}/horario/${id}`);
   }
 
   delete(id:number){
-    return this.http.delete(`${environment.apiURL}/${id}`);
+    return this.http.delete(`${environment.apiURL}/horario/${id}`);
   }
 
 }

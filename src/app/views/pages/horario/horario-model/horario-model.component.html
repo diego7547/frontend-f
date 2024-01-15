@@ -1,39 +1,90 @@
-<app-modal (showModel)="initShowModel($event)" [visible]="showModel" [width]="'30vw'">
-    <h1 class="text-center">Registro Asistencia</h1>
-    <form class="form-data" [formGroup]="formData" (submit)="submitData()">
-        <div class="row data">
-            <input
-              type="number"
-              placeholder="Ingrese su dni "
-              class="col"          
-            formControlName="dniPersonal"
-              />
-    
-          </div>
-          <div class="row data  d-flex justify-content-evenly">
-            <select formControlName="estRegistro" formControlName="dsHorario">
-                <option class="p-2" *ngFor="let rol of rolesList" [value]="rol">{{rol}}</option>
-            </select>
-        </div>
-        <div class="row data">
-        <input
-        type="time"
-        class="col"
-            formControlName="hdiHorario"
-      />
-      <input
-      type="time"
-      formControlName="hdsHorario"
-      
-      class="col"
-      
-    />
 
-      </div>
-     
-      <div class="row data">
-        <button class="col btn btn-primary" type="submit">Registrar</button>
-        <button class="col btn btn-danger" type="button" (click)="cancelar()" >Volver</button>
-      </div>
-    </form>
-  </app-modal>
+    <app-modal (showModel)="initShowModel($event)" [visible]="showModel" [width]="'30vw'" (modalClosed)="cancelar()">
+       <!--  <h1 class="text-center">Registro Horario</h1>
+        <form class="form-data" [formGroup]="formData" (submit)="submitData()">
+            <div class="row data">
+                <input
+                  type="number"
+                  placeholder="Ingrese su dni "
+                  class="col"          
+                formControlName="dniPersonal"
+                [ngClass]="{'danger':formData.get('dniPersonal')?.touched && formData.get('dniPersonal')?.errors?.['required']}"
+                  />
+                  <div class="position-absolute" *ngIf="formData.get('dniPersonal')?.touched || formData.controls['dniPersonal'].invalid ">
+                    <span *ngIf="formData.get('dniPersonal')?.touched && formData.get('dniPersonal')?.errors?.['required']" class="text-danger">
+                    Debe de ingresar su dni*
+                    </span>
+                </div>
+              </div>
+              <div class="row data  d-flex justify-content-evenly">
+                <select formControlName="estRegistro" formControlName="dsHorario"  [ngClass]="{'danger':(formData.get('dsHorario')?.touched && formData.get('dsHorario')?.errors?.['required']) }">
+                    <option class="p-2" *ngFor="let rol of rolesList" [value]="rol">{{rol}}</option>
+                </select>
+                <div class="position-absolute" *ngIf="formData.get('dsHorario')?.touched || formData.controls['dsHorario'].invalid ">
+                  <span *ngIf="formData.get('dsHorario')?.touched && formData.get('dsHorario')?.errors?.['required']" class="text-danger">
+                  Debe seleccionar un dia *
+                  </span>
+              </div>
+            </div>
+    
+            
+            <div class="row data">
+            <input
+            type="time"
+            class="col"
+                formControlName="hdiHorario"
+                [ngClass]="{'danger':formData.get('hdiHorario')?.touched && formData.get('hdiHorario')?.errors?.['required']}"
+          />
+          
+          <input
+          type="time"
+          formControlName="hdsHorario"
+          class="col"
+          [ngClass]="{'danger':formData.get('hdsHorario')?.touched && formData.get('hdsHorario')?.errors?.['required']}"
+        />
+        
+          </div>
+         
+          <div class="row data">
+            <button class="col btn btn-primary" type="submit" [disabled]="formData.invalid">{{isUpdateOrInsert? 'Registrar':'Actualizar' }}</button>
+            <button class="col btn btn-danger" type="button" (click)="cancelar()" >Volver</button>
+          </div>
+        </form> -->
+        <h1 class="text-center m-3">Registro Horario</h1>
+        <form [formGroup]="formData" (submit)="submitData()">
+          <div class="form-data">
+            <mat-form-field appearance="outline">
+                <mat-label>Dni</mat-label>
+                <input matInput type="number" placeholder="Ejm. 1234567" formControlName="dniPersonal"  />
+              </mat-form-field>
+            
+        </div>
+        <div class="form-data">
+          <mat-form-field appearance="outline">
+            <mat-label>Hora Entra.</mat-label>
+            <input matInput type="time"   formControlName="hdiHorario"  /> 
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Hora Sali.</mat-label>
+            <input matInput type="time"  formControlName="hdsHorario" />
+          </mat-form-field>
+        </div>
+        <div class="form-data">
+          <mat-form-field appearance="outline">
+            <mat-label>Dia Semanal</mat-label>
+            <mat-select formControlName="dsHorario">
+              <mat-option *ngFor="let cargo of rolesList" [value]="cargo">
+                  {{  cargo |  uppercase}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="action">
+          <button class="col btn btn-primary" type="submit" [disabled]="formData.invalid">{{isUpdateOrInsert? 'Registrar':'Actualizar' }}</button>
+          <button class="col btn btn-danger" type="button" (click)="cancelar()">Volver</button>
+        </div>
+        </form>
+      </app-modal>
+    
+    
+

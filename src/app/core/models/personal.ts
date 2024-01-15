@@ -4,11 +4,11 @@ export interface Personal {
     apePersonal:string,
     direcPersonal:string,
     telPersonal:string,
-    fnacPersonal:Date,
+    fnacPersonal:string,
     rolPersonal:Rol
 }
 
-enum Rol{
+export enum Rol{
     DIRECTOR,
     ADMINISTRACION,
     DOCENTE,

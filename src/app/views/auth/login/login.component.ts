@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { LoginService } from 'src/app/core/services/login/login.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { LoginService } from 'src/app/core/services/login/login.service';
 export class LoginComponent implements OnInit{
 
 
-  constructor(private fb:FormBuilder,private service:LoginService,private router:Router){}
+  constructor(private fb:FormBuilder,private service:LoginService,private router:Router,private cookie:CookieService){}
   valido:boolean = true;
   ngOnInit(): void {
     this.user = this.initForm();
@@ -32,18 +33,19 @@ export class LoginComponent implements OnInit{
     const username = this.user.get('username')?.value;
     const password = this.user.get('password')?.value;
 
-
-     this.service.login(username,password).subscribe({
+    this.service.login(username,password).subscribe({
       next:({token,status})=>{
+        
         if(status){
-          localStorage.setItem('token_personal',token);
-          this.router.navigate(['/pages/personal']);
+          this.cookie.set('token',token);
+          this.router.navigate(['/pages/dashboard']);
         }else{
           this.limpiar();
         }
 
 
-      }
+      },
+      error:(err)=> console.log(err)
       }
       );
       

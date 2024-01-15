@@ -16,33 +16,37 @@ export class PersonalService {
     return this.http.get<Personal[]>(`${environment.apiURL}/personal`);  
   }
 
-  findOne(id:number){
+  findOne(id:string){
     return this.http.get<Personal>(`${environment.apiURL}/personal/${id}`);
   }
 
 
-  insertOrUpdate(personal:Personal){
-    if(personal.dniPersonal.length > 0){
-      return this.http.put(`${environment.apiURL}/personal/${personal.dniPersonal}`,{
-        nomPersonal :personal.nomPersonal,
-        apePersonal:personal.apePersonal,
-        direcPersonal:personal.apePersonal,
-        telPersonal:personal.telPersonal,
-        fnacPersonal:personal.fnacPersonal,
-        rolPersonal:personal.rolPersonal
-      });
-    }else{
-      return this.http.post(`${environment.apiURL}/personal`,{
-        nomPersonal :personal.nomPersonal,
-        apePersonal:personal.apePersonal,
-        direcPersonal:personal.apePersonal,
-        telPersonal:personal.telPersonal,
-        fnacPersonal:personal.fnacPersonal,
-        rolPersonal:personal.rolPersonal
-      });
-    }
+ 
+
+
+  insertPersonal(personal:Personal){
+    return this.http.post(`${environment.apiURL}/personal`,{
+      dniPersonal:personal.dniPersonal,
+      nomPersonal :personal.nomPersonal,
+      apePersonal:personal.apePersonal,
+      direcPersonal:personal.apePersonal,
+      telPersonal:personal.telPersonal,
+      fnacPersonal:personal.fnacPersonal,
+      rolPersonal:personal.rolPersonal
+    });
   }
 
+  updatePersonal(personal:Personal){
+   console.log(personal.fnacPersonal)
+    return this.http.put(`${environment.apiURL}/personal/${personal.dniPersonal}`,{
+      nomPersonal :personal.nomPersonal,
+      apePersonal:personal.apePersonal,
+      direcPersonal:personal.direcPersonal,
+      telPersonal:personal.telPersonal,
+      fnacPersonal:personal.fnacPersonal,
+      rolPersonal:personal.rolPersonal
+    });
+  }
 
   delete(dni:string){
     return this.http.delete(`${environment.apiURL}/personal/${dni}`);

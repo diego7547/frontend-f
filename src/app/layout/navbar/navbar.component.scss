@@ -11,7 +11,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+.button-img:hover{
+    background-color: #0800ea;
+}
 
 .sidenav {
     height: calc(100vh - 120px);

@@ -11,6 +11,11 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 
+
+import { NgApexchartsModule } from "ng-apexcharts";
+import {MatMenuModule} from '@angular/material/menu';
+
+
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -24,6 +29,9 @@ import {MatIconModule} from '@angular/material/icon';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
+    NgApexchartsModule,
+    MatMenuModule,
+    
   ],exports:[LayoutComponent],
   
 })

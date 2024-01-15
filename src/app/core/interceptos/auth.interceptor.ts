@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
@@ -6,17 +6,20 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-
+  
+   
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
    let cloenReq =request;
-   if(localStorage.getItem('token_personal')){
+   let tokenKey = inject(CookieService)
+   if(tokenKey.get("token")){
     cloenReq = request.clone({
-      headers: request.headers.set('Authorization',`Bearer ${localStorage.getItem('token_personal')}`)
+      headers: request.headers.set('Authorization',`Bearer ${tokenKey.get('token')}`)
     })
    }
 

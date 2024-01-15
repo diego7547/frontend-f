@@ -4,7 +4,7 @@ import { PersonalComponent } from './personal.component';
 import { authGuard } from 'src/app/core/security/auth.guard';
 
 const routes: Routes = [
-  {path:'',component:PersonalComponent, canActivate:[authGuard]}
+  {path:'',component:PersonalComponent}
 ];
 
 @NgModule({

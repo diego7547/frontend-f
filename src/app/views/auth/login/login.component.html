@@ -3,7 +3,7 @@
       <div class="col-md-5 login-form ">
             <div class=" d-flex justify-content-center align-items-center flex-column">
                 <img src="./../../../../assets/Imagen1.png"  alt="">
-                <h1 class="text-center title ">REGISTRO ACADEMICO</h1>
+                <h1 class="text-center title ">CONTROL ACADEMICO</h1>
                 <div class="form-body">
                     <form [formGroup]="user" (ngSubmit)="enviar()">
                         <div class="form-data">
@@ -16,9 +16,7 @@
                                 <span [hidden]="valido || user.get('username')?.touched" class="text-danger">
                                         usuario invalido
                                 </span>
-                                <!-- <span *ngIf="user.get('username')?.touched && user.get('username')?.errors?.['minlength']" class="text-danger">
-                                    Debe de ingresar {{user.get('username')?.errors?.['minlength'].requiredLength}} caracteres como minimo
-                                    </span> -->
+                                
                             </div>
                         </div>
                         <div class="form-data">

@@ -1,5 +1,5 @@
-<app-modal (showModel)="initShowModel($event)" [visible]="showModel" [width]="'40vw'">
-  <h1 class="text-center">Registro Asistencia</h1>
+<app-modal (showModel)="initShowModel($event)" [visible]="showModel" (modalClosed)="cancelar()"  [width]="'40vw'">
+  <!-- <h1 class="text-center">Registro Asistencia</h1>
   <form class="form-data" [formGroup]="formData" (submit)="submitData()">
     <div class="row data">
       <input
@@ -7,39 +7,118 @@
         placeholder="Ingrese su dni "
         class="col"
         formControlName="dniPersonal"
+        [ngClass]="{'danger':formData.get('dniPersonal')?.touched && formData.get('dniPersonal')?.errors?.['required']}"
+
       />
+      <div class="position-absolute" *ngIf="formData.get('dniPersonal')?.touched || formData.controls['dniPersonal'].invalid ">
+        <span *ngIf="formData.get('dniPersonal')?.touched && formData.get('dniPersonal')?.errors?.['required']" class="text-danger">
+        Debe de ingresar su dni*
+        </span>
+    </div>
+     
       <input
       type="date"
       
       class="col"
       formControlName="fcRegistro"
+      [value]="formDataEdit.fcRegistro | date:'yyyy-MM-dd'"
+      [ngClass]="{'danger':formData.get('fcRegistro')?.touched && formData.get('fcRegistro')?.errors?.['required']}"
     />
+    <div class="position-absolute" *ngIf="formData.get('fcRegistro')?.touched || formData.controls['fcRegistro'].invalid ">
+      <span  *ngIf="formData.get('fcRegistro')?.touched && formData.get('fcRegistro')?.errors?.['required']" class="text-danger span-2">
+      Debe seleccionar una fecha*
+      </span>
+  </div>
     </div>
     <div class="row data">
         <input
           type="time"
           class="col"
           formControlName="hdeRegistro"
+          [ngClass]="{'danger':formData.get('hdeRegistro')?.touched && formData.get('hdeRegistro')?.errors?.['required']}"
+
         />
         <input
         type="time"
         formControlName="hdsRegistro"
         class="col"
+        [ngClass]="{'danger':formData.get('hdsRegistro')?.touched && formData.get('hdsRegistro')?.errors?.['required']}"
+
         
       />
       </div>
 
       <div class="row data  d-flex justify-content-evenly">
-        <select formControlName="estRegistro">
+        <select formControlName="estRegistro" [ngClass]="{'danger':formData.get('estRegistro')?.touched && formData.get('estRegistro')?.errors?.['required']}"
+        >
             <option class="p-2" *ngFor="let rol of rolesList" [value]="rol">{{rol}}</option>
         </select>
+        <div class="position-absolute" *ngIf="formData.get('estRegistro')?.touched || formData.controls['estRegistro'].invalid ">
+          <span *ngIf="formData.get('estRegistro')?.touched && formData.get('estRegistro')?.errors?.['required']" class="text-danger span-3">
+          Debe de ingresar un estado*
+          </span>
+      </div>
     </div>
 
     <div class="row data">
         <textarea name="" id=""  rows="5" formControlName="obsRegistro"></textarea>
     </div>
     <div class="row data">
-      <button class="col btn btn-primary" type="submit">Registrar</button>
+      <button class="col btn btn-primary" type="submit" [disabled]="formData.invalid">{{isUpdateOrInsert? 'Registrar':'Actualizar' }}</button>
+      <button class="col btn btn-danger" type="button" (click)="cancelar()">Volver</button>
+    </div>
+  </form> -->
+  <h1 class="text-center m-3">Registro Asistencia</h1>
+  <form [formGroup]="formData" (submit)="submitData()">
+
+    <div class="form-data">
+      <mat-form-field appearance="outline">
+        <mat-label>Dni</mat-label>
+        <input matInput type="number" placeholder="Ejm. 1234567" formControlName="dniPersonal" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Fecha de Nac.</mat-label>
+        <input matInput [matDatepicker]="picker"  formControlName="fcRegistro" />
+        
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="form-data">
+      <mat-form-field appearance="outline">
+        <mat-label>Hora Ingre.</mat-label>
+        <input matInput type="time"   formControlName="hdeRegistro" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Hora Sali.</mat-label>
+        <input matInput type="time"  formControlName="hdsRegistro" />
+      </mat-form-field>
+    </div>
+    <div class="form-data">
+      <mat-form-field appearance="outline">
+        <mat-label>Cargo Pers.</mat-label>
+        <mat-select formControlName="cargo" formControlName="estRegistro">
+          <mat-option *ngFor="let cargo of rolesList" [value]="cargo">
+              {{  cargo |  uppercase}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  
+    <div class="form-data">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Observaciones</mat-label>
+        <textarea matInput placeholder="Ex. Pidio permiso" formControlName="obsRegistro"></textarea>
+      </mat-form-field>
+      
+    </div>
+
+    <div class="action">
+      <button class="col btn btn-primary" type="submit" [disabled]="formData.invalid">{{isUpdateOrInsert? 'Registrar':'Actualizar' }}</button>
       <button class="col btn btn-danger" type="button" (click)="cancelar()">Volver</button>
     </div>
   </form>

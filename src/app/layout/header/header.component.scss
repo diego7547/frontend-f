@@ -1,3 +1,44 @@
+
 mat-toolbar{
     background-color: red;
+    width: 100%;
+}
+
+
+.button-navbar{
+    color: white;
+   
+}
+.button-group{
+    position: relative;
+}
+.button-info{
+    
+display: flex;
+
+justify-content: space-around;
+}
+.span-content{
+    position: absolute;
+    bottom: 7px;
+    left: 40px;
+    z-index: 3;
+}
+
+
+
+@media screen and (max-width:650px) 
+{
+  
+    span{
+    font-size: 70%;
+   } 
+}
+
+@media screen and (max-width:450px) 
+{
+  
+    span{
+    font-size: .5em;
+   } 
 }

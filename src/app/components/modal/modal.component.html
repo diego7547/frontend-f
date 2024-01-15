@@ -1,6 +1,8 @@
 <div class=" flex justify-content-center align-items-content p-1 ">
-    <p-button (click)="showDialog()"  label="Registro"></p-button>
-    <p-dialog header=""   [breakpoints]="{ '1100px': '50vw' }" [(visible)]="visible" [modal]="true"    [style]="{ width: width }" [draggable]="false" [resizable]="false">
+    <button (click)="showDialog()" class="btn btn-success ">Crear 
+    <i class="pi pi-plus"></i>
+</button>
+    <p-dialog header=""   [breakpoints]="{ '1100px': '50vw' }" (onHide)="onDialogHidden()"  [(visible)]="visible" [modal]="true"    [style]="{ width: width }" [draggable]="false" [resizable]="false">
         <ng-content></ng-content>  
     </p-dialog>
 </div>

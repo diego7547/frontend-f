@@ -4,11 +4,11 @@ import { authGuard } from 'src/app/core/security/auth.guard';
 import { RegistroComponent } from './registro.component';
 
 const routes: Routes = [
-  {path:'',component:RegistroComponent, canActivate:[authGuard]}
+  {path:'',component:RegistroComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class RegistroRoutingModule { }
+export class RegistroRoutingModule {}

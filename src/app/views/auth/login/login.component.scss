@@ -39,6 +39,7 @@
     margin-top: 30px;
     padding: .1px;
     position: relative;
+    
     input{
         padding:6px;
         padding-left: 30px;
@@ -70,4 +71,23 @@ button:hover{
 .img-colegio{
     min-width:100%;
     height: auto;
+    overflow: auto;
 }
+
+@media screen and (max-width:1000px) {
+    .form-body{
+        
+        input{
+            width: calc(100% - 20px);
+        }
+    }
+    span{
+        left: 14px;
+        top: 10px;
+    }
+    button{
+        width: calc(100% - 20px);
+        
+    }
+}
+

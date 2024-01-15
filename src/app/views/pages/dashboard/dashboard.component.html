@@ -1,0 +1,22 @@
+<app-dashboard-modal></app-dashboard-modal>
+
+<div class="content-sidebar">
+  <mat-spinner *ngIf="!isLoadingResults" [diameter]="100" ></mat-spinner>
+</div>
+
+<!-- <div class="w-100 d-flex justify-content-center align-items-center"> -->
+<div *ngIf="isLoadingResults" class="d-flex justify-content-center graf">
+  <div id="chart" class="row"  *ngIf="chartOptions">
+    <apx-chart class="col-12"
+    [series]="chartOptions.series!"
+    [chart]="chartOptions.chart!"
+    [dataLabels]="chartOptions.dataLabels!"
+    [plotOptions]="chartOptions.plotOptions!"
+    [responsive]="chartOptions.responsive!"
+    [xaxis]="chartOptions.xaxis!"
+    [legend]="chartOptions.legend!"
+    [fill]="chartOptions.fill!"
+    ></apx-chart>
+  </div>
+  
+</div>

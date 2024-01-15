@@ -4,7 +4,7 @@ import { authGuard } from 'src/app/core/security/auth.guard';
 import { HorarioComponent } from './horario.component';
 
 const routes: Routes = [
-  {path:'',component:HorarioComponent, canActivate:[authGuard]}
+  {path:'',component:HorarioComponent}
 ];
 
 @NgModule({

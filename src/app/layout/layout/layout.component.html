@@ -4,12 +4,18 @@
 <mat-sidenav-container    >
 <mat-sidenav    #sidenav="matSidenav" mode="side" opened><app-navbar></app-navbar></mat-sidenav>
 <mat-sidenav-content >
-
-        <div class="content ">
         
+        <div class="content" >
+                
                 <router-outlet>
                 </router-outlet>
         </div>
-
+        <div class="footer">
+        
+        <span>
+                Copyright@SanMiguel{{dataNow | date:'YYYY' }}
+        </span> 
+        </div>
+       
 </mat-sidenav-content>
 </mat-sidenav-container>

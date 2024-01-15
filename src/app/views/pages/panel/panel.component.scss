@@ -1,50 +1,84 @@
+@import 'sweetalert2/src/sweetalert2.scss';
+@import url('https://fonts.googleapis.com/css2?family=Afacad&family=Lato&family=Manjari:wght@100&family=Noto+Sans&family=Open+Sans&family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Afacad&family=Lato&family=Manjari:wght@100&family=Noto+Sans&family=Open+Sans:wght@300;400&family=Roboto+Mono&display=swap');
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Afacad', sans-serif;
 }
-.content-panel{
-    width: 100%;
-    height: 100vh;
-    background-color: rgb(215, 250, 249);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-    .content-body{
-        width: 700px;
-        height: 600px;
-        background-color: aliceblue;
-        margin: 30px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border: 1px solid rgb(192, 192, 192);
-        border-radius: 40px;
+.body{
+    background-image: url("./../../../../assets/fondo-panel.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
-        .body-panel{
-            padding: 20px 30px;
-        }
-        .header-panel{
-            width: 100%;
-            height: 200px;
-            margin-top: 40px;
-            padding: 34px 20px;
-            text-align: center;
+.body-content{
+    background-color: rgba(217,217,217,63%);
+    border-radius: 40px;
+    border: 2px solid rgba(15, 37, 204, 0.707);
+    
+    width: 900px;
+    height: 600px;
+    margin: 20px;
+    padding: 20px;
 
-            .panel-opcion{
-                margin-top: 40px;
-                
-                display: flex;
-                justify-content: space-around;
-            
-                button{
-                    padding: 10px 20px;
-                   margin: 10px;
-                   
+    .content-panel{
+      
+        
+        
+        .form{
+           
+            .input-data{
+                margin-bottom: 40px;
+                input{
+                    width: 100%;
+                    font-size: 7em;
                 }
             }
         }
+    }
+
+
+}
+
+input{
+    font-family: 'Afacad', sans-serif;
+
+}
+
+span{
+    font-size: 2em;
+}
+
+
+h1{
+    font-size: 3em;
+}
+
+button{
+    font-size: 3em;
+    
+   
+}
+p{
+    font-size: 2em;
+}
+
+@media screen and (max-width:450px) {
+    .body-content{
+       
+        width: 100%;
+    }
+    .data{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .button{
+        display: flex;
+        flex-direction: column;
+        font-size: 10px;
+        
     }
 }

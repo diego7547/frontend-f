@@ -16,7 +16,7 @@ export class LoginService {
     })
   }
 
-  verificarToken(){
-    return this.http.get<{status:boolean}>(`${environment.apiURL}/login`);
+  verificarToken(token:string){
+    return this.http.put<{status:boolean}>(`${environment.apiURL}/login`,{token:token});
   }
 }
